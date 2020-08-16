@@ -1,6 +1,7 @@
 FROM node:latest
 ENV DEBIAN_FRONTEND=noninteractive
-RUN set -xe && \
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    echo 'Asia/Shanghai' >/etc/timezone && \		     
     npm install -g hexo-cli && \
     sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list && \
     sed -i 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list && \
